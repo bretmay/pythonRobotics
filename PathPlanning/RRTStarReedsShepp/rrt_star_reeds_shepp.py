@@ -7,11 +7,12 @@ author: AtsushiSakai(@Atsushi_twi)
 """
 import copy
 import math
-import random
 import sys
 import pathlib
 import matplotlib.pyplot as plt
 import numpy as np
+import secrets
+
 sys.path.append(str(pathlib.Path(__file__).parent.parent))
 
 from ReedsSheppPath import reeds_shepp_path_planning
@@ -65,7 +66,7 @@ class RRTStarReedsShepp(RRTStar):
         self.goal_xy_th = 0.5
 
     def set_random_seed(self, seed):
-        random.seed(seed)
+        secrets.SystemRandom().seed(seed)
 
     def planning(self, animation=True, search_until_max_iter=True):
         """
@@ -182,9 +183,9 @@ class RRTStarReedsShepp(RRTStar):
 
     def get_random_node(self):
 
-        rnd = self.Node(random.uniform(self.min_rand, self.max_rand),
-                        random.uniform(self.min_rand, self.max_rand),
-                        random.uniform(-math.pi, math.pi)
+        rnd = self.Node(secrets.SystemRandom().uniform(self.min_rand, self.max_rand),
+                        secrets.SystemRandom().uniform(self.min_rand, self.max_rand),
+                        secrets.SystemRandom().uniform(-math.pi, math.pi)
                         )
 
         return rnd

@@ -7,10 +7,11 @@ Path planning Sample Code with RRT with path smoothing
 """
 
 import math
-import random
 import matplotlib.pyplot as plt
 import sys
 import pathlib
+import secrets
+
 sys.path.append(str(pathlib.Path(__file__).parent))
 
 from rrt import RRT
@@ -79,7 +80,7 @@ def path_smoothing(path, max_iter, obstacle_list):
 
     for i in range(max_iter):
         # Sample two points
-        pickPoints = [random.uniform(0, le), random.uniform(0, le)]
+        pickPoints = [secrets.SystemRandom().uniform(0, le), secrets.SystemRandom().uniform(0, le)]
         pickPoints.sort()
         first = get_target_point(path, pickPoints[0])
         second = get_target_point(path, pickPoints[1])

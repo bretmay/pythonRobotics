@@ -7,11 +7,12 @@ author: AtsushiSakai(@Atsushi_twi)
 """
 import copy
 import math
-import random
 import matplotlib.pyplot as plt
 import numpy as np
 import sys
 import pathlib
+import secrets
+
 sys.path.append(str(pathlib.Path(__file__).parent.parent))
 
 from LQRPlanner.lqr_planner import LQRPlanner
@@ -146,9 +147,9 @@ class LQRRRTStar(RRTStar):
 
     def get_random_node(self):
 
-        if random.randint(0, 100) > self.goal_sample_rate:
-            rnd = self.Node(random.uniform(self.min_rand, self.max_rand),
-                            random.uniform(self.min_rand, self.max_rand)
+        if secrets.SystemRandom().randint(0, 100) > self.goal_sample_rate:
+            rnd = self.Node(secrets.SystemRandom().uniform(self.min_rand, self.max_rand),
+                            secrets.SystemRandom().uniform(self.min_rand, self.max_rand)
                             )
         else:  # goal point sampling
             rnd = self.Node(self.end.x, self.end.y)

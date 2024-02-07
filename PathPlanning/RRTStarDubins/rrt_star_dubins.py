@@ -6,11 +6,12 @@ author: AtsushiSakai(@Atsushi_twi)
 """
 import copy
 import math
-import random
 import matplotlib.pyplot as plt
 import numpy as np
 import sys
 import pathlib
+import secrets
+
 sys.path.append(str(pathlib.Path(__file__).parent.parent.parent))  # root dir
 sys.path.append(str(pathlib.Path(__file__).parent.parent))
 
@@ -167,10 +168,10 @@ class RRTStarDubins(RRTStar):
 
     def get_random_node(self):
 
-        if random.randint(0, 100) > self.goal_sample_rate:
-            rnd = self.Node(random.uniform(self.min_rand, self.max_rand),
-                            random.uniform(self.min_rand, self.max_rand),
-                            random.uniform(-math.pi, math.pi)
+        if secrets.SystemRandom().randint(0, 100) > self.goal_sample_rate:
+            rnd = self.Node(secrets.SystemRandom().uniform(self.min_rand, self.max_rand),
+                            secrets.SystemRandom().uniform(self.min_rand, self.max_rand),
+                            secrets.SystemRandom().uniform(-math.pi, math.pi)
                             )
         else:  # goal point sampling
             rnd = self.Node(self.end.x, self.end.y, self.end.yaw)

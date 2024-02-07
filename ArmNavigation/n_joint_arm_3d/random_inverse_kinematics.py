@@ -4,11 +4,11 @@ Author: Takayuki Murooka (takayuki5168)
 """
 import math
 from NLinkArm3d import NLinkArm
-import random
+import secrets
 
 
 def random_val(min_val, max_val):
-    return min_val + random.random() * (max_val - min_val)
+    return min_val + secrets.SystemRandom().random() * (max_val - min_val)
 
 
 def main():

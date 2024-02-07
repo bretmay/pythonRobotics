@@ -11,8 +11,8 @@ Avoiding additional imports based on repository philosophy.
 """
 import math
 import matplotlib.pyplot as plt
-import random
 import numpy as np
+import secrets
 
 show_animation = True
 pause_time = 0.001
@@ -232,10 +232,10 @@ class DStarLite:
             self.spoofed_obstacles.pop(0)
 
         # Allows random generation of obstacles
-        random.seed()
-        if random.random() > 1 - p_create_random_obstacle:
-            x = random.randint(0, self.x_max - 1)
-            y = random.randint(0, self.y_max - 1)
+        secrets.SystemRandom().seed()
+        if secrets.SystemRandom().random() > 1 - p_create_random_obstacle:
+            x = secrets.SystemRandom().randint(0, self.x_max - 1)
+            y = secrets.SystemRandom().randint(0, self.y_max - 1)
             new_obs = Node(x, y)
             if compare_coordinates(new_obs, self.start) or \
                compare_coordinates(new_obs, self.goal):

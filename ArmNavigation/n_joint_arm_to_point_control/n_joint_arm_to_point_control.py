@@ -7,6 +7,8 @@ Author: Daniel Ingram (daniel-s-ingram)
 
 import sys
 from pathlib import Path
+import secrets
+
 sys.path.append(str(Path(__file__).parent.parent.parent))
 
 import numpy as np
@@ -81,10 +83,9 @@ def inverse_kinematics(link_lengths, joint_angles, goal_pos):
 
 
 def get_random_goal():
-    from random import random
     SAREA = 15.0
-    return [SAREA * random() - SAREA / 2.0,
-            SAREA * random() - SAREA / 2.0]
+    return [SAREA * secrets.SystemRandom().random() - SAREA / 2.0,
+            SAREA * secrets.SystemRandom().random() - SAREA / 2.0]
 
 
 def animation():

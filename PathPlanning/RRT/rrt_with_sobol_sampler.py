@@ -27,12 +27,12 @@ Rojas (rafaelrojasmiliani@gmail.com)
 """
 
 import math
-import random
 import sys
 import matplotlib.pyplot as plt
 import numpy as np
 
 from sobol import sobol_quasirand
+import secrets
 
 show_animation = True
 
@@ -168,7 +168,7 @@ class RRTSobol:
         return math.hypot(dx, dy)
 
     def get_random_node(self):
-        if random.randint(0, 100) > self.goal_sample_rate:
+        if secrets.SystemRandom().randint(0, 100) > self.goal_sample_rate:
             rand_coordinates, n = sobol_quasirand(2, self.sobol_inter_)
 
             rand_coordinates = self.min_rand + \

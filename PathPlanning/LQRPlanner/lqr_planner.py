@@ -7,11 +7,11 @@ author: Atsushi Sakai (@Atsushi_twi)
 """
 
 import math
-import random
 
 import matplotlib.pyplot as plt
 import numpy as np
 import scipy.linalg as la
+import secrets
 
 SHOW_ANIMATION = True
 
@@ -129,8 +129,8 @@ def main():
     for i in range(ntest):
         sx = 6.0
         sy = 6.0
-        gx = random.uniform(-area, area)
-        gy = random.uniform(-area, area)
+        gx = secrets.SystemRandom().uniform(-area, area)
+        gy = secrets.SystemRandom().uniform(-area, area)
 
         rx, ry = lqr_planner.lqr_planning(sx, sy, gx, gy, show_animation=SHOW_ANIMATION)
 
