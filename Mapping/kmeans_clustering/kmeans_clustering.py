@@ -8,7 +8,7 @@ author: Atsushi Sakai (@Atsushi_twi)
 
 import math
 import matplotlib.pyplot as plt
-import random
+import secrets
 
 # k means parameters
 MAX_LOOP = 10
@@ -41,7 +41,7 @@ class Clusters:
         self.y = y
         self.n_data = len(self.x)
         self.n_label = n_label
-        self.labels = [random.randint(0, n_label - 1)
+        self.labels = [secrets.SystemRandom().randint(0, n_label - 1)
                        for _ in range(self.n_data)]
         self.center_x = [0.0 for _ in range(n_label)]
         self.center_y = [0.0 for _ in range(n_label)]
@@ -87,8 +87,8 @@ def calc_raw_data(cx, cy, n_points, rand_d):
 
     for (icx, icy) in zip(cx, cy):
         for _ in range(n_points):
-            rx.append(icx + rand_d * (random.random() - 0.5))
-            ry.append(icy + rand_d * (random.random() - 0.5))
+            rx.append(icx + rand_d * (secrets.SystemRandom().random() - 0.5))
+            ry.append(icy + rand_d * (secrets.SystemRandom().random() - 0.5))
 
     return rx, ry
 

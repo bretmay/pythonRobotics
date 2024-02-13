@@ -3,11 +3,12 @@ RRT* path planner for a seven joint arm
 Author: Mahyar Abdeetedal (mahyaret)
 """
 import math
-import random
 import numpy as np
 import matplotlib.pyplot as plt
 import sys
 import pathlib
+import secrets
+
 sys.path.append(str(pathlib.Path(__file__).parent.parent))
 
 from n_joint_arm_3d.NLinkArm3d import NLinkArm
@@ -229,7 +230,7 @@ class RRTStar:
         return distance
 
     def get_random_node(self):
-        if random.randint(0, 100) > self.goal_sample_rate:
+        if secrets.SystemRandom().randint(0, 100) > self.goal_sample_rate:
             rnd = self.Node(np.random.uniform(self.min_rand,
                                               self.max_rand,
                                               self.dimension))

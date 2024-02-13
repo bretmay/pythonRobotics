@@ -7,12 +7,13 @@ author: Atsushi Sakai
 """
 import sys
 import pathlib
+import secrets
+
 sys.path.append(str(pathlib.Path(__file__).parent.parent.parent))
 
 import numpy as np
 import matplotlib.pyplot as plt
 import math
-import random
 
 from utils.angle import rot_mat_2d
 
@@ -106,7 +107,7 @@ class LidarSimulator:
 
             for vx, vy in zip(gx, gy):
                 v_angle = math.atan2(vy, vx)
-                vr = np.hypot(vx, vy) * random.uniform(1.0 - self.range_noise,
+                vr = np.hypot(vx, vy) * secrets.SystemRandom().uniform(1.0 - self.range_noise,
                                                        1.0 + self.range_noise)
 
                 x.append(vx)

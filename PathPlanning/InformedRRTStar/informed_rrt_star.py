@@ -11,12 +11,12 @@ https://arxiv.org/pdf/1404.2334.pdf
 """
 import sys
 import pathlib
+import secrets
 
 sys.path.append(str(pathlib.Path(__file__).parent.parent.parent))
 
 import copy
 import math
-import random
 
 import matplotlib.pyplot as plt
 import numpy as np
@@ -157,8 +157,8 @@ class InformedRRTStar:
 
     @staticmethod
     def sample_unit_ball():
-        a = random.random()
-        b = random.random()
+        a = secrets.SystemRandom().random()
+        b = secrets.SystemRandom().random()
 
         if b < a:
             a, b = b, a
@@ -168,9 +168,9 @@ class InformedRRTStar:
         return np.array([[sample[0]], [sample[1]], [0]])
 
     def sample_free_space(self):
-        if random.randint(0, 100) > self.goal_sample_rate:
-            rnd = [random.uniform(self.min_rand, self.max_rand),
-                   random.uniform(self.min_rand, self.max_rand)]
+        if secrets.SystemRandom().randint(0, 100) > self.goal_sample_rate:
+            rnd = [secrets.SystemRandom().uniform(self.min_rand, self.max_rand),
+                   secrets.SystemRandom().uniform(self.min_rand, self.max_rand)]
         else:
             rnd = [self.goal.x, self.goal.y]
 

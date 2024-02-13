@@ -12,8 +12,8 @@ P. I. Corke, "Robotics, Vision & Control", Springer 2017, ISBN 978-3-319-54413-7
 
 import matplotlib.pyplot as plt
 import numpy as np
-from random import random
 from utils.angle import angle_mod
+import secrets
 
 class PathFinderController:
     """
@@ -172,12 +172,12 @@ def transformation_matrix(x, y, theta):
 def main():
 
     for i in range(5):
-        x_start = 20.0 * random()
-        y_start = 20.0 * random()
-        theta_start: float = 2 * np.pi * random() - np.pi
-        x_goal = 20 * random()
-        y_goal = 20 * random()
-        theta_goal = 2 * np.pi * random() - np.pi
+        x_start = 20.0 * secrets.SystemRandom().random()
+        y_start = 20.0 * secrets.SystemRandom().random()
+        theta_start: float = 2 * np.pi * secrets.SystemRandom().random() - np.pi
+        x_goal = 20 * secrets.SystemRandom().random()
+        y_goal = 20 * secrets.SystemRandom().random()
+        theta_goal = 2 * np.pi * secrets.SystemRandom().random() - np.pi
         print(f"Initial x: {round(x_start, 2)} m\nInitial y: {round(y_start, 2)} m\nInitial theta: {round(theta_start, 2)} rad\n")
         print(f"Goal x: {round(x_goal, 2)} m\nGoal y: {round(y_goal, 2)} m\nGoal theta: {round(theta_goal, 2)} rad\n")
         move_to_pose(x_start, y_start, theta_start, x_goal, y_goal, theta_goal)

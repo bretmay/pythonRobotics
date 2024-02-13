@@ -16,6 +16,7 @@ import matplotlib.pyplot as plt
 import numpy as np
 import math
 from utils.angle import angle_mod
+import secrets
 
 
 # Simulation parameters
@@ -121,12 +122,11 @@ def click(event):  # pragma: no cover
 
 
 def animation():
-    from random import random
     global x, y
     theta1 = theta2 = 0.0
     for i in range(5):
-        x = 2.0 * random() - 1.0
-        y = 2.0 * random() - 1.0
+        x = 2.0 * secrets.SystemRandom().random() - 1.0
+        y = 2.0 * secrets.SystemRandom().random() - 1.0
         theta1, theta2 = two_joint_arm(
             GOAL_TH=0.01, theta1=theta1, theta2=theta2)
 

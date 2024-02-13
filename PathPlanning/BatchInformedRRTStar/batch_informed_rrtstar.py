@@ -15,10 +15,10 @@ Reference: https://arxiv.org/abs/1405.5848
 """
 
 import math
-import random
 
 import matplotlib.pyplot as plt
 import numpy as np
+import secrets
 
 show_animation = True
 
@@ -417,8 +417,8 @@ class BITStar:
     # Sample point in a unit ball
     @staticmethod
     def sample_unit_ball():
-        a = random.random()
-        b = random.random()
+        a = secrets.SystemRandom().random()
+        b = secrets.SystemRandom().random()
 
         if b < a:
             a, b = b, a
@@ -428,8 +428,8 @@ class BITStar:
         return np.array([[sample[0]], [sample[1]], [0]])
 
     def sample_free_space(self):
-        rnd = [random.uniform(self.min_rand, self.max_rand),
-               random.uniform(self.min_rand, self.max_rand)]
+        rnd = [secrets.SystemRandom().uniform(self.min_rand, self.max_rand),
+               secrets.SystemRandom().uniform(self.min_rand, self.max_rand)]
 
         return rnd
 

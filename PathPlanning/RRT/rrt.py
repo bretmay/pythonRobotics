@@ -7,10 +7,10 @@ author: AtsushiSakai(@Atsushi_twi)
 """
 
 import math
-import random
 
 import matplotlib.pyplot as plt
 import numpy as np
+import secrets
 
 show_animation = True
 
@@ -162,10 +162,10 @@ class RRT:
         return math.hypot(dx, dy)
 
     def get_random_node(self):
-        if random.randint(0, 100) > self.goal_sample_rate:
+        if secrets.SystemRandom().randint(0, 100) > self.goal_sample_rate:
             rnd = self.Node(
-                random.uniform(self.min_rand, self.max_rand),
-                random.uniform(self.min_rand, self.max_rand))
+                secrets.SystemRandom().uniform(self.min_rand, self.max_rand),
+                secrets.SystemRandom().uniform(self.min_rand, self.max_rand))
         else:  # goal point sampling
             rnd = self.Node(self.end.x, self.end.y)
         return rnd

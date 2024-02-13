@@ -8,8 +8,8 @@ author: Atsushi Sakai (@Atsushi_twi)
 
 import matplotlib.pyplot as plt
 import math
-import random
 import numpy as np
+import secrets
 
 show_animation = True
 
@@ -57,7 +57,7 @@ def get_sample_points(cx, cy, cr, angle_reso):
         nx = cx + cr * math.cos(theta)
         ny = cy + cr * math.sin(theta)
         nangle = math.atan2(ny, nx)
-        nr = math.hypot(nx, ny) * random.uniform(0.95, 1.05)
+        nr = math.hypot(nx, ny) * secrets.SystemRandom().uniform(0.95, 1.05)
 
         x.append(nx)
         y.append(ny)
