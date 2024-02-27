@@ -157,9 +157,9 @@ class ObstaclePolygon:
 
     def is_clockwise(self):
         n_data = len(self.x_list)
-        eval_sum = sum([(self.x_list[i + 1] - self.x_list[i]) *
+        eval_sum = sum((self.x_list[i + 1] - self.x_list[i]) *
                         (self.y_list[i + 1] + self.y_list[i])
-                        for i in range(n_data - 1)])
+                        for i in range(n_data - 1))
         eval_sum += (self.x_list[0] - self.x_list[n_data - 1]) * \
                     (self.y_list[0] + self.y_list[n_data - 1])
         return eval_sum >= 0

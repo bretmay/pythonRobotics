@@ -43,7 +43,7 @@ class eta3_trajectory(Eta3Path):
         assert max_vel > 0 and v0 >= 0 and a0 >= 0 and max_accel > 0 and max_jerk > 0 \
             and a0 <= max_accel and v0 <= max_vel
         super(eta3_trajectory, self).__init__(segments=segments)
-        self.total_length = sum([s.segment_length for s in self.segments])
+        self.total_length = sum(s.segment_length for s in self.segments)
         self.max_vel = float(max_vel)
         self.v0 = float(v0)
         self.a0 = float(a0)

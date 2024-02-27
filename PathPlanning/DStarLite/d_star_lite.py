@@ -161,10 +161,10 @@ class DStarLite:
 
     def update_vertex(self, u: Node):
         if not compare_coordinates(u, self.goal):
-            self.rhs[u.x][u.y] = min([self.c(u, sprime) +
+            self.rhs[u.x][u.y] = min(self.c(u, sprime) +
                                       self.g[sprime.x][sprime.y]
-                                      for sprime in self.succ(u)])
-        if any([compare_coordinates(u, node) for node, key in self.U]):
+                                      for sprime in self.succ(u))
+        if any(compare_coordinates(u, node) for node, key in self.U):
             self.U = [(node, key) for node, key in self.U
                       if not compare_coordinates(node, u)]
             self.U.sort(key=lambda x: x[1])

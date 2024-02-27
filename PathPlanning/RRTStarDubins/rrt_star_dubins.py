@@ -151,7 +151,7 @@ class RRTStarDubins(RRTStar):
         new_node.path_x = px
         new_node.path_y = py
         new_node.path_yaw = pyaw
-        new_node.cost += sum([abs(c) for c in course_lengths])
+        new_node.cost += sum(abs(c) for c in course_lengths)
         new_node.parent = from_node
 
         return new_node
@@ -162,7 +162,7 @@ class RRTStarDubins(RRTStar):
             from_node.x, from_node.y, from_node.yaw,
             to_node.x, to_node.y, to_node.yaw, self.curvature)
 
-        cost = sum([abs(c) for c in course_lengths])
+        cost = sum(abs(c) for c in course_lengths)
 
         return from_node.cost + cost
 
@@ -194,7 +194,7 @@ class RRTStarDubins(RRTStar):
         if not final_goal_indexes:
             return None
 
-        min_cost = min([self.node_list[i].cost for i in final_goal_indexes])
+        min_cost = min(self.node_list[i].cost for i in final_goal_indexes)
         for i in final_goal_indexes:
             if self.node_list[i].cost == min_cost:
                 return i

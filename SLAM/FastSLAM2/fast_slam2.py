@@ -58,7 +58,7 @@ def fast_slam2(particles, u, z):
 
 
 def normalize_weight(particles):
-    sum_w = sum([p.w for p in particles])
+    sum_w = sum(p.w for p in particles)
 
     try:
         for i in range(N_PARTICLE):
