@@ -146,7 +146,7 @@ class RRTDubins(RRT):
         new_node.path_x = px
         new_node.path_y = py
         new_node.path_yaw = pyaw
-        new_node.cost += sum([abs(c) for c in course_lengths])
+        new_node.cost += sum(abs(c) for c in course_lengths)
         new_node.parent = from_node
 
         return new_node
@@ -187,7 +187,7 @@ class RRTDubins(RRT):
         if not final_goal_indexes:
             return None
 
-        min_cost = min([self.node_list[i].cost for i in final_goal_indexes])
+        min_cost = min(self.node_list[i].cost for i in final_goal_indexes)
         for i in final_goal_indexes:
             if self.node_list[i].cost == min_cost:
                 return i

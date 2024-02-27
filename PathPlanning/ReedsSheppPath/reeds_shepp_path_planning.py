@@ -302,7 +302,7 @@ def generate_path(q0, q1, max_curvature, step_size):
         flag, travel_distances, steering_dirns = path_func(x, y, dth)
         if flag:
             for distance in travel_distances:
-                if (0.1*sum([abs(d) for d in travel_distances]) < abs(distance) < step_size):
+                if (0.1*sum(abs(d) for d in travel_distances) < abs(distance) < step_size):
                     print("Step size too large for Reeds-Shepp paths.")
                     return []
             paths = set_path(paths, travel_distances, steering_dirns, step_size)
@@ -310,7 +310,7 @@ def generate_path(q0, q1, max_curvature, step_size):
         flag, travel_distances, steering_dirns = path_func(-x, y, -dth)
         if flag:
             for distance in travel_distances:
-                if (0.1*sum([abs(d) for d in travel_distances]) < abs(distance) < step_size):
+                if (0.1*sum(abs(d) for d in travel_distances) < abs(distance) < step_size):
                     print("Step size too large for Reeds-Shepp paths.")
                     return []
             travel_distances = timeflip(travel_distances)
@@ -319,7 +319,7 @@ def generate_path(q0, q1, max_curvature, step_size):
         flag, travel_distances, steering_dirns = path_func(x, -y, -dth)
         if flag:
             for distance in travel_distances:
-                if (0.1*sum([abs(d) for d in travel_distances]) < abs(distance) < step_size):
+                if (0.1*sum(abs(d) for d in travel_distances) < abs(distance) < step_size):
                     print("Step size too large for Reeds-Shepp paths.")
                     return []
             steering_dirns = reflect(steering_dirns)
@@ -328,7 +328,7 @@ def generate_path(q0, q1, max_curvature, step_size):
         flag, travel_distances, steering_dirns = path_func(-x, -y, dth)
         if flag:
             for distance in travel_distances:
-                if (0.1*sum([abs(d) for d in travel_distances]) < abs(distance) < step_size):
+                if (0.1*sum(abs(d) for d in travel_distances) < abs(distance) < step_size):
                     print("Step size too large for Reeds-Shepp paths.")
                     return []
             travel_distances = timeflip(travel_distances)

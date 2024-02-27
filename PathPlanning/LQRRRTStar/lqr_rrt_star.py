@@ -126,7 +126,7 @@ class LQRRRTStar(RRTStar):
         if not goal_inds:
             return None
 
-        min_cost = min([self.node_list[i].cost for i in goal_inds])
+        min_cost = min(self.node_list[i].cost for i in goal_inds)
         for i in goal_inds:
             if self.node_list[i].cost == min_cost:
                 return i
@@ -199,7 +199,7 @@ class LQRRRTStar(RRTStar):
         newNode.y = py[-1]
         newNode.path_x = px
         newNode.path_y = py
-        newNode.cost += sum([abs(c) for c in course_lens])
+        newNode.cost += sum(abs(c) for c in course_lens)
         newNode.parent = from_node
 
         return newNode

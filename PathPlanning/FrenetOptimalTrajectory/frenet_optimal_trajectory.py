@@ -198,7 +198,7 @@ def check_collision(fp, ob):
         d = [((ix - ob[i, 0]) ** 2 + (iy - ob[i, 1]) ** 2)
              for (ix, iy) in zip(fp.x, fp.y)]
 
-        collision = any([di <= ROBOT_RADIUS ** 2 for di in d])
+        collision = any(di <= ROBOT_RADIUS ** 2 for di in d)
 
         if collision:
             return False
@@ -209,13 +209,13 @@ def check_collision(fp, ob):
 def check_paths(fplist, ob):
     ok_ind = []
     for i, _ in enumerate(fplist):
-        if any([v > MAX_SPEED for v in fplist[i].s_d]):  # Max speed check
+        if any(v > MAX_SPEED for v in fplist[i].s_d):  # Max speed check
             continue
-        elif any([abs(a) > MAX_ACCEL for a in
-                  fplist[i].s_dd]):  # Max accel check
+        elif any(abs(a) > MAX_ACCEL for a in
+                  fplist[i].s_dd):  # Max accel check
             continue
-        elif any([abs(c) > MAX_CURVATURE for c in
-                  fplist[i].c]):  # Max curvature check
+        elif any(abs(c) > MAX_CURVATURE for c in
+                  fplist[i].c):  # Max curvature check
             continue
         elif not check_collision(fplist[i], ob):
             continue

@@ -133,7 +133,7 @@ class Dstar:
     def get_kmin(self):
         if not self.open_list:
             return -1
-        k_min = min([x.k for x in self.open_list])
+        k_min = min(x.k for x in self.open_list)
         return k_min
 
     def insert(self, state, h_new):

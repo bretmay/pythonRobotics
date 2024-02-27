@@ -137,7 +137,7 @@ def quintic_polynomials_planner(sx, sy, syaw, sv, sa, gx, gy, gyaw, gv, ga, max_
                 j *= -1
             rj.append(j)
 
-        if max([abs(i) for i in ra]) <= max_accel and max([abs(i) for i in rj]) <= max_jerk:
+        if max(abs(i) for i in ra) <= max_accel and max(abs(i) for i in rj) <= max_jerk:
             print("find path!!")
             break
 

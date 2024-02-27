@@ -113,7 +113,7 @@ def motion_model(x, u):
 
 
 def draw_heat_map(data, mx, my):
-    max_value = max([max(i_data) for i_data in data])
+    max_value = max(max(i_data) for i_data in data)
     plt.grid(False)
     plt.pcolor(mx, my, data, vmax=max_value, cmap=mpl.colormaps["Blues"])
     plt.axis("equal")
@@ -143,7 +143,7 @@ def observation(xTrue, u, RFID):
 
 
 def normalize_probability(grid_map):
-    sump = sum([sum(i_data) for i_data in grid_map.data])
+    sump = sum(sum(i_data) for i_data in grid_map.data)
 
     for ix in range(grid_map.x_w):
         for iy in range(grid_map.y_w):

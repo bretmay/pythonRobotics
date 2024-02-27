@@ -166,7 +166,7 @@ class RRTStarReedsShepp(RRTStar):
         new_node.path_x = px
         new_node.path_y = py
         new_node.path_yaw = pyaw
-        new_node.cost += sum([abs(l) for l in course_lengths])
+        new_node.cost += sum(abs(l) for l in course_lengths)
         new_node.parent = from_node
 
         return new_node
@@ -179,7 +179,7 @@ class RRTStarReedsShepp(RRTStar):
         if not course_lengths:
             return float("inf")
 
-        return from_node.cost + sum([abs(l) for l in course_lengths])
+        return from_node.cost + sum(abs(l) for l in course_lengths)
 
     def get_random_node(self):
 
@@ -209,7 +209,7 @@ class RRTStarReedsShepp(RRTStar):
         if not final_goal_indexes:
             return None
 
-        min_cost = min([self.node_list[i].cost for i in final_goal_indexes])
+        min_cost = min(self.node_list[i].cost for i in final_goal_indexes)
         print("min_cost:", min_cost)
         for i in final_goal_indexes:
             if self.node_list[i].cost == min_cost:
