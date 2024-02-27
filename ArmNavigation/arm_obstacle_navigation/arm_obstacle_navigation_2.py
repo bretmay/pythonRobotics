@@ -275,7 +275,8 @@ class NLinkArm(object):
 
         self.end_effector = np.array(self.points[self.n_links]).T
 
-    def plot_arm(self, myplt, obstacles=[]):  # pragma: no cover
+    def plot_arm(self, myplt, obstacles=None):  # pragma: no cover
+        obstacles = [] if obstacles is None else obstacles
         myplt.cla()
 
         for obstacle in obstacles:
