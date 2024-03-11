@@ -4,5 +4,5 @@ matplotlib == 3.8.2
 cvxpy == 1.4.2
 pytest == 8.0.0 # For unit test
 pytest-xdist == 3.5.0 # For unit test
-mypy == 1.8.0 # For unit test
+mypy == 1.9.0 # For unit test
 ruff == 0.2.0 # For unit test
